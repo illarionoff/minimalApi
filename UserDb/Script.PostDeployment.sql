@@ -1,7 +1,7 @@
 ﻿if not exists(SELECT 1 FROM dbo.[User])
 begin
 	INSERT 
-	INTO db.[User] (FirstName, LastName) 
+	INTO dbo.[User] (FirstName, LastName) 
 	VALUES 
 	('John', 'Snow'),
 	('Mike', 'Magic'),
