@@ -3,7 +3,7 @@ using DataAccess.Models;
 
 namespace DataAccess.Data;
 
-public class UserData
+public class UserData : IUserData
 {
     private readonly ISqlDataAccess _dataAccess;
 
@@ -14,7 +14,8 @@ public class UserData
 
     public Task<IEnumerable<UserModel>> GetUsers() => _dataAccess.LoadData<UserModel, dynamic>("dbo.spUser_GetAll", new { });
 
-    public async Task<UserModel?> GetUser(int id) {
+    public async Task<UserModel?> GetUser(int id)
+    {
         var results = await _dataAccess.LoadData<UserModel, dynamic>("dbo.spUser_Get", new { Id = id });
         return results.FirstOrDefault();
     }
